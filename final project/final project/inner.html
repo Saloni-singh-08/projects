@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EAZY CLEAN</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      padding-top: 80px; /* To account for the fixed navbar */
+    }
+    .service-options {
+      display: none; /* Hide all sub-options by default */
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header Section -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Service Booking</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="home_user.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <h2>Book a Service</h2>
+    <form>
+
+      <!-- Service Dropdown -->
+      <div class="mb-3">
+        <label for="service" class="form-label">Select Service</label>
+        <select id="service" class="form-select" required>
+          <option selected disabled>Select a service</option>
+          <option value="electrician">Electrician</option>
+          <option value="Repair">Repair</option>
+          <option value="plumbing">Plumbing</option>
+          <option value="gas_repair">Gas Repair</option>
+          <option value="cook">Cook</option>
+          <option value="makeup_artist">Makeup Artist</option>
+          <option value="cleaning">Cleaning</option>
+          <option value="snake_rescue">Snake Rescue Team</option>
+          <option value="carpentors">Carpenters</option>
+          <option value="interior_design">Interior Designing</option>
+          <option value="painting">Painting</option>
+          <option value="septic_tank_clean">Septic Tank Clean</option>
+          <option value="tank_clean">Tank Clean</option>
+        </select>
+      </div>
+
+      <!-- Sub-Option Dropdowns for Each Service -->
+      <!-- Electrician Options -->
+      <div class="mb-3 service-options" id="electrician-options">
+        <label for="electrician" class="form-label">Electrician Services</label>
+        <select id="electrician" class="form-select">
+          <option selected disabled>Select an Electrician Service</option>
+          <option value="wiring">Wiring</option>
+          <option value="lighting">Lighting</option>
+          <option value="repairs">Repairs</option>
+        </select>
+      </div>
+
+
+      <!--Repair-->
+      <div class="mb-3 service-options" id="Repair-options">
+        <label for="Repair" class="form-label">Repair</label>
+        <select id="Repair" class="form-select">
+          <option selected disabled>Select an Reapir Service</option>
+          <option value="ac">ac repair</option>
+          <option value="chimney">chimney Repair</option>
+          <option value="prifier">water purifier Repair</option>
+          <option value="refrigirator">refregirator Repair </option>
+          <option value="washing machine">washing machine Repair </option>
+        </select>
+      </div>
+      <!-- Plumbing Options -->
+      <div class="mb-3 service-options" id="plumbing-options">
+        <label for="plumbing" class="form-label">Plumbing Services</label>
+        <select id="plumbing" class="form-select">
+          <option selected disabled>Select a Plumbing Service</option>
+          <option value="leak_fix">Leak Fix</option>
+          <option value="pipe_replacement">Pipe Replacement</option>
+          <option value="drain_cleaning">Drain Cleaning</option>
+        </select>
+      </div>
+
+      <!-- Gas Repair Options -->
+      <div class="mb-3 service-options" id="gas_repair-options">
+        <label for="gas_repair" class="form-label">Gas Repair Services</label>
+        <select id="gas_repair" class="form-select">
+          <option selected disabled>Select a Gas Repair Service</option>
+          <option value="gas_leak_fix">Gas Leak Fix</option>
+          <option value="gas_appliance_installation">Gas Appliance Installation</option>
+          <option value="gas_pipe_replacement">Gas Pipe Replacement</option>
+        </select>
+      </div>
+
+      <!-- Cook Options -->
+      <div class="mb-3 service-options" id="cook-options">
+        <label for="cook" class="form-label">Cook Services</label>
+        <select id="cook" class="form-select">
+          <option selected disabled>Select a Cook Service</option>
+          <option value="personal_chef">Personal Chef</option>
+          <option value="catering">Catering</option>
+          <option value="cooking_classes">Bithday party</option>
+        </select>
+      </div>
+
+      <!-- Makeup Artist Options -->
+      <div class="mb-3 service-options" id="makeup_artist-options">
+        <label for="makeup_artist" class="form-label">Makeup Artist Services</label>
+        <select id="makeup_artist" class="form-select">
+          <option selected disabled>Select a Makeup Artist Service</option>
+          <option value="bridal_makeup">Bridal Makeup</option>
+          <option value="party_makeup">Party Makeup</option>
+          <option value="makeup_consultation">Makeup Consultation</option>
+        </select>
+      </div>
+
+      <!-- Cleaning Options -->
+      <div class="mb-3 service-options" id="cleaning-options">
+        <label for="cleaning" class="form-label">Cleaning Services</label>
+        <select id="cleaning" class="form-select">
+          <option selected disabled>Select a Cleaning Service</option>
+          <option value="home_cleaning">Home Cleaning</option>
+          <option value="office_cleaning">Office Cleaning</option>
+          <option value="Kitchen_cleaning">Kitchen Cleaning</option>
+          <option value="deep_cleaning">Deep Cleaning</option>
+          <option value="bathrrom_cleaning">Bathroom Cleaning</option>
+          <option value="fridge_cleaning">Fridge Cleaning</option>
+          <option value="tiles_cleaning">Tiles Cleaning</option>
+        </select>
+      </div>
+
+      <!-- Snake Rescue Options -->
+      <div class="mb-3 service-options" id="snake_rescue-options">
+        <label for="snake_rescue" class="form-label">Snake Rescue Services</label>
+        <select id="snake_rescue" class="form-select">
+          <option selected disabled>Select a Snake Rescue Service</option>
+          <option value="snake_removal">Snake Removal</option>
+          <option value="snake_relocation">Snake Relocation</option>
+          <option value="snake_inspection">Snake Inspection</option>
+        </select>
+      </div>
+
+      <!-- Carpentor Options -->
+      <div class="mb-3 service-options" id="carpentors-options">
+        <label for="carpentors" class="form-label">Carpentor Services</label>
+        <select id="carpentors" class="form-select">
+          <option selected disabled>Select a Carpentor Service</option>
+          <option value="furniture_repair">Furniture Repair</option>
+          <option value="custom_furniture">Custom Furniture</option>
+          <option value="woodwork_installation">Woodwork Installation</option>
+        </select>
+      </div>
+
+      <!-- Interior Design Options -->
+      <div class="mb-3 service-options" id="interior_design-options">
+        <label for="interior_design" class="form-label">Interior Design Services</label>
+        <select id="interior_design" class="form-select">
+          <option selected disabled>Select an Interior Design Service</option>
+          <option value="living_room_design">Living Room Design</option>
+          <option value="bedroom_design">Bedroom Design</option>
+          <option value="office_design">Office Design</option>
+          <option value="storagesoln_design">Storage soln and installation system</option>
+          <option value="firemgmt_design">Fire place and managemment</option>
+        </select>
+      </div>
+
+      <!-- Painting Options -->
+      <div class="mb-3 service-options" id="painting-options">
+        <label for="painting" class="form-label">Painting Services</label>
+        <select id="painting" class="form-select">
+          <option selected disabled>Select a Painting Service</option>
+          <option value="wall_painting">Wall Painting</option>
+          <option value="decorative_painting">Decorative Painting</option>
+          <option value="exterior_painting">Exterior Painting</option>
+          <option value="wallpaper_painting">wallpaper installation</option>
+        </select>
+      </div>
+
+      <!-- Septic Tank Clean Options -->
+      <div class="mb-3 service-options" id="septic_tank_clean-options">
+        <label for="septic_tank_clean" class="form-label">Septic Tank Clean Services</label>
+        <select id="septic_tank_clean" class="form-select">
+          <option selected disabled>Select a Septic Tank Clean Service</option>
+          <option value="septic_tank_inspection">Septic Tank Inspection</option>
+          <option value="septic_tank_cleaning">Septic Tank Cleaning</option>
+          <option value="septic_tank_installation">Septic Tank Installation</option>
+        </select>
+      </div>
+
+      <!-- Tank Clean Options -->
+      <div class="mb-3 service-options" id="tank_clean-options">
+        <label for="tank_clean" class="form-label">Tank Clean Services</label>
+        <select id="tank_clean" class="form-select">
+          <option selected disabled>Select a Tank Clean Service</option>
+          <option value="water_tank_cleaning">Water Tank Cleaning</option>
+          <option value="tank_inspection">Tank Inspection</option>
+          <option value="tank_maintenance">Tank Maintenance</option>
+        </select>
+      </div>
+
+      <!-- Date and Time Picker -->
+      <div class="mb-3">
+        <label for="serviceDate" class="form-label">Choose Date and Time</label>
+        <input type="datetime-local" class="form-control" id="serviceDate" required>
+      </div>
+
+      <!-- Text Detail -->
+      <div class="mb-3">
+        <label for="details" class="form-label">Additional Details</label>
+        <textarea class="form-control" id="details" rows="3" placeholder="Enter additional details"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Book Service</button>
+    </form>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>&copy; 2024 EAZY CLEAN Service Booking. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript to toggle the visibility of sub-options -->
+  <script>
+    document.getElementById('service').addEventListener('change', function() {
+      // Hide all service options first
+      var allOptions = document.querySelectorAll('.service-options');
+      allOptions.forEach(function(option) {
+        option.style.display = 'none';
+      });
+
+      // Show the relevant options based on the selected service
+      var selectedService = this.value;
+      var selectedServiceOptions = document.getElementById(selectedService + '-options');
+      if (selectedServiceOptions) {
+        selectedServiceOptions.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>

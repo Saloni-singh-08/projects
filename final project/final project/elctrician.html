@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrician Services & Charges</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Styles -->
+  <style>
+    .service-card {
+      margin-top: 20px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .service-card:hover {
+      transform: scale(1.05);
+    }
+
+    .service-header {
+      background-color: #ec640f;
+      background-color: ;
+      color: rgb(0, 0, 0);
+      padding: 15px;
+    }
+
+    .service-footer {
+      background-color: #f8f9fa;
+      padding: 10px;
+    }
+
+    .service-price {
+      font-size: 1.2rem;
+      color: #ff3333;
+    }
+
+    .card-body img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-bottom: 1px solid #000000;
+    }
+
+    .card-body .btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    /* Optional: Animating the box when hovered */
+    .service-card:hover .card-body img {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
+    }
+
+    /* Making images responsive and keeping layout tidy */
+    @media (max-width: 767px) {
+      .service-card {
+        margin-bottom: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <h2 class="text-center">Electrician Services & Charges</h2>
+
+    <!-- Service Cards -->
+    <div class="row">
+
+      <!-- Service 1 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card service-card">
+          <div class="card-header service-header">
+            <h4 class="card-title">Electrical Wiring</h4>
+          </div>
+          <div class="card-body" onclick="window.location.href='inner.html'">
+            <img src="https://i.pinimg.com/originals/47/17/e4/4717e41099b6655abfb3a86c3054c522.jpg" alt="Electrical Wiring">
+            <p>Installation of new wiring, rewiring, and troubleshooting.</p>
+            <button class="btn btn-warning" onclick="window.location.href='inner.html'">Get Service</button>
+          </div>
+          <div class="card-footer service-footer">
+            <p class="service-price">Price:15 rs sq feet</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card service-card">
+          <div class="card-header service-header">
+            <h4 class="card-title">Light Fixture Installation</h4>
+          </div>
+          <div class="card-body" onclick="window.location.href='inner.html'">
+            <img src="https://i5.walmartimages.com/asr/744ab671-0723-4796-a4ad-b48634a588c5.6f3ecb0dd7ee68f62255abb6429c7ac0.jpeg?odnWidth=1000&odnHeight=1000&odnBg=ffffff" alt="Light Fixture Installation">
+            <p>Install ceiling lights, fans, and chandeliers.</p>
+            <button class="btn btn-warning" onclick="window.location.href='inner.html'">Get Service</button>
+          </div>
+          <div class="card-footer service-footer">
+            <p class="service-price">Price:160 rs</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card service-card">
+          <div class="card-header service-header">
+            <h4 class="card-title">Outlet & Switch Repair</h4>
+          </div>
+          <div class="card-body" onclick="window.location.href='inner.html'">
+            <img src="https://cdn.homecrux.com/wp-content/uploads/2017/09/Best-switch-designs.jpg" alt="Outlet & Switch Repair">
+            <p>Repair faulty outlets, switches, and circuit breakers.</p>
+            <button class="btn btn-warning" onclick="window.location.href='inner.html'">Get Service</button>
+          </div>
+          <div class="card-footer service-footer">
+            <p class="service-price">Price:110 rs</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Service Cards (Additional Services) -->
+    <div class="row">
+
+      <!-- Service 4 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card service-card">
+          <div class="card-header service-header">
+            <h4 class="card-title">SHORT CIRCUIT REPAIR</h4>
+          </div>
+          <div class="card-body" onclick="window.location.href='inner.html'">
+            <img src="https://th.bing.com/th/id/OIP.YMGxgLUP8u7lNwRgGW6GVAHaE7?rs=1&pid=ImgDetMain" alt="Short Circuit Repair">
+            <p>Installation of new wiring, solving problems.</p>
+            <button class="btn btn-warning" onclick="window.location.href='inner.html'">Get Service</button>
+          </div>
+          <div class="card-footer service-footer">
+            <p class="service-price">Price: DEPEND ON AREA, Wiring Charge 5-RS/SQ FEET</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card service-card">
+          <div class="card-header service-header">
+            <h4 class="card-title">METER INSTALL</h4>
+          </div>
+          <div class="card-body" onclick="window.location.href='inner.html'">
+            <img src="https://st.depositphotos.com/1216882/2632/i/950/depositphotos_26324279-stock-photo-woman-looking-at-an-open.jpg" alt="Meter Install">
+            <p>Electric meter installation.</p>
+            <button class="btn btn-warning" onclick="window.location.href='inner.html'">Get Service</button>
+          </div>
+          <div class="card-footer service-footer">
+            <p class="service-price">Price:1150 rs</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="col-md-4 col-sm-6">
+        <div class="card service-card">
+          <div class="card-header service-header">
+            <h4 class="card-title">AC INSTALLATION</h4>
+          </div>
+          <div class="card-body" onclick="window.location.href='inner.html">
+            <img src="https://www.familyhandyman.com/wp-content/uploads/2019/07/FH19SEP_597_50_030.jpg?fit=696,1024" alt="AC Installation">
+            <p>Installation of new AC, repair, and troubleshooting.</p>
+            <button class="btn btn-warning" onclick="window.location.href='inner.html'">Get Service</button>
+          </div>
+          <div class="card-footer service-footer">
+            <p class="service-price">Price: DEPEND ON MODEL</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Toggle Service Charges -->
+    <div class="text-center">
+      <button class="btn btn-info" id="toggleServices">Show/Hide Service Charges</button>
+    </div>
+
+  </div>
+
+  <!-- jQuery Script to Toggle Services -->
+  <script>
+    $(document).ready(function () {
+      $('#toggleServices').click(function () {
+        $('.service-footer').toggle();
+      });
+    });
+  </script>
+
+</body>
+
+</html>
