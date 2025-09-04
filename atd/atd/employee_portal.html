@@ -1,0 +1,131 @@
+<!-- Employee Portal (Responsive & Styled HTML + JS) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Dashboard - SAIL</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ffffff, #2575fc);
+      color: #ffffff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #5e9bff;
+      padding: 1rem;
+    }
+    header img {
+      width: 120px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+    input, button {
+      margin: 10px 0;
+      padding: 0.6rem;
+      font-size: 1rem;
+      width: 80%;
+      border: none;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #000000;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #000000;
+    }
+  </style>
+  <script>
+    let imageData = "";
+    let locationData = {};
+
+    window.onload = () => {
+      getLocation();
+    }
+
+    function getLocation() {
+      navigator.geolocation.getCurrentPosition(position => {
+        locationData = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude
+        };
+        console.log("Location auto-captured:", locationData);
+      }, () => {
+        alert("Location access is required!");
+      });
+    }
+
+    function captureImage() {
+      const video = document.createElement("video");
+      navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+        video.srcObject = stream;
+        video.play();
+        document.body.appendChild(video);
+
+        setTimeout(() => {
+          const canvas = document.createElement("canvas");
+          canvas.width = 640;
+          canvas.height = 480;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(video, 0, 0);
+          imageData = canvas.toDataURL("image/png");
+          stream.getTracks().forEach(track => track.stop());
+          video.remove();
+          document.getElementById("markBtn").disabled = false;
+          alert("Image captured!");
+        }, 3000);
+      }).catch(err => {
+        alert("Camera access is required!");
+      });
+    }
+
+    function markAttendance() {
+      const empId = document.getElementById("empId").value;
+      if (!empId.trim()) return alert("Employee ID is required");
+      if (!imageData) return alert("Image capture is required");
+      if (!locationData.latitude) return alert("Location must be available");
+
+      fetch("http://localhost:5000/mark-attendance", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ empId, image: imageData, location: locationData })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) alert("Attendance marked successfully!");
+        else alert("Failed to mark attendance");
+      });
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-N42Bphgsy7ITFrbZ2c2nVBEl1-xLJ8oRgQ&sg" alt="SAIL Logo">
+    <h2>Steel Authority of India Ltd - Employee Dashboard</h2>
+  </header>
+
+  <div class="container">
+    <h3>Mark Your Attendance</h3>
+    <input type="text" id="empId" placeholder="Enter Employee ID">
+    <br>
+    <button onclick="captureImage()">Capture Image</button>
+    <br>
+    <button id="markBtn" onclick="markAttendance()" disabled>Mark Attendance</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 SAIL | Attendance Management System</p>
+  </footer>
+</body>
+</html>
