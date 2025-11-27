@@ -1,0 +1,11 @@
+subject,topic,topic_length,self_rating,past_score,time_needed_hours,difficulty
+Maths,Algebra,5,4,80,2.0,Easy
+Maths,Quadratic Equations,8,3,70,3.5,Medium
+Maths,Integrals,12,2,50,6.0,Hard
+Physics,Newton Laws,7,3,75,3.0,Medium
+Physics,Electrostatics,10,2,60,5.0,Hard
+Chemistry,Atomic Structure,6,4,85,2.5,Easy
+Chemistry,Organic Reactions,14,1,40,7.0,Hard
+CS,Arrays,4,5,90,1.5,Easy
+CS,Dynamic Programming,15,2,55,8.0,Hard
+CS,Recursion,9,3,68,4.0,Medium

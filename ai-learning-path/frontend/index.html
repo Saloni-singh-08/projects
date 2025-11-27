@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Study Planner</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>Smart Study Planner</h1>
+            <p>Estimate difficulty and time for any topic, then jump to video resources.</p>
+        </div>
+
+        <div class="card">
+            <h2>🧠 Enter Your Study Details</h2>
+
+            <div class="form-group">
+                <label for="stream">Stream</label>
+                <select id="stream">
+                    <option value="" disabled selected>Select stream</option>
+                    <option value="Science">Science</option>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Arts">Arts</option>
+                    <option value="Engineering">Engineering</option>
+                    <option value="CS">Computer Science</option>
+                </select>
+                <small class="help-text">
+                    Stream helps suggest better topic and YouTube search keywords.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <select id="subject">
+                    <option value="" disabled selected>Select subject</option>
+
+                    <!-- Science -->
+                    <option value="Physics">Physics (Science)</option>
+                    <option value="Chemistry">Chemistry (Science)</option>
+                    <option value="Biology">Biology (Science)</option>
+                    <option value="Maths">Maths (Science)</option>
+
+                    <!-- Commerce -->
+                    <option value="Accountancy">Accountancy (Commerce)</option>
+                    <option value="Business Studies">Business Studies (Commerce)</option>
+                    <option value="Economics">Economics (Commerce)</option>
+
+                    <!-- Arts -->
+                    <option value="History">History (Arts)</option>
+                    <option value="Political Science">Political Science (Arts)</option>
+                    <option value="Geography">Geography (Arts)</option>
+                    <option value="Psychology">Psychology (Arts)</option>
+
+                    <!-- Engineering / CS -->
+                    <option value="CS">Computer Science</option>
+                    <option value="Data Structures">Data Structures</option>
+                    <option value="Operating Systems">Operating Systems</option>
+                    <option value="Networks">Computer Networks</option>
+                </select>
+                <small class="help-text">
+                    Choose the main subject you are studying.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="topic">Topic</label>
+                <input id="topic" type="text" placeholder="e.g., Quadratic Equations, Linked Lists, Demand and Supply" />
+                <small class="help-text">
+                    Be specific (chapter or concept name). This is used for YouTube suggestions.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="topic_length">Topic Length</label>
+                <input id="topic_length" type="number" min="1" max="20" placeholder="5" />
+                <small class="help-text">
+                    Approximate number of subtopics or sections in this chapter (1 = very short, 15+ = very long).
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="self_rating">Self Rating</label>
+                <input id="self_rating" type="number" min="1" max="5" placeholder="3" />
+                <small class="help-text">
+                    Rate your comfort with this subject from 1 (very weak) to 5 (very strong).
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="past_score">Past Score</label>
+                <input id="past_score" type="number" min="0" max="100" placeholder="80" />
+                <small class="help-text">
+                    Your previous exam/quiz score in this subject (0–100). Leave blank if unsure.
+                </small>
+            </div>
+
+            <button onclick="predict()">Predict Plan</button>
+
+            <div class="result">
+                <p><strong>Predicted Difficulty:</strong> <span id="difficulty"></span></p>
+                <p><strong>Time Needed (hours):</strong> <span id="time_needed"></span></p>
+            </div>
+
+            <div class="resources">
+                <h3>📺 Recommended YouTube Search</h3>
+                <p id="yt_text">Fill the form and click Predict to get a YouTube search link.</p>
+                <a id="yt_link" href="#" target="_blank" class="yt-button" style="display:none;">Open YouTube search</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function buildYouTubeSearchURL(subject, topic) {
+            // Basic search URL = https://www.youtube.com/results?search_query=... [web:42][web:43]
+            const query = encodeURIComponent(subject + " " + topic + " lecture for beginners");
+            return "https://www.youtube.com/results?search_query=" + query;
+        }
+
+        async function predict() {
+            const subjectValue = document.getElementById("subject").value;
+            const topicValue = document.getElementById("topic").value.trim();
+            const topicLength = parseFloat(document.getElementById("topic_length").value);
+            const selfRating = parseFloat(document.getElementById("self_rating").value);
+            const pastScore = parseFloat(document.getElementById("past_score").value);
+
+            const data = {
+                subject: subjectValue || "CS",
+                topic_length: isNaN(topicLength) ? 5 : topicLength,
+                self_rating: isNaN(selfRating) ? 3 : selfRating,
+                past_score: isNaN(pastScore) ? 60 : pastScore
+            };
+
+            try {
+                const response = await fetch("http://127.0.0.1:5000/predict", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    document.getElementById("difficulty").innerText = result.difficulty;
+                    document.getElementById("time_needed").innerText = result.time_needed_hours;
+
+                    const ytUrl = buildYouTubeSearchURL(subjectValue || "study", topicValue || "basics");
+                    const ytLink = document.getElementById("yt_link");
+                    const ytText = document.getElementById("yt_text");
+                    ytLink.href = ytUrl;
+                    ytLink.style.display = "inline-block";
+                    ytText.textContent = "Click below to explore YouTube videos for this topic.";
+                } else {
+                    document.getElementById("difficulty").innerText = "Error: " + result.error;
+                    document.getElementById("time_needed").innerText = "";
+                }
+            } catch (error) {
+                document.getElementById("difficulty").innerText = "Request failed.";
+                document.getElementById("time_needed").innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
